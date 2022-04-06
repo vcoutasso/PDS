@@ -58,3 +58,4 @@ def dtft(x, n, w=np.linspace(-np.pi, np.pi, num=1024)):
         X[i] = np.sum(x * np.exp(-1j * w[i] * n))
 
     return X, w
+
