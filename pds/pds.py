@@ -59,3 +59,18 @@ def dtft(x, n, w=np.linspace(-np.pi, np.pi, num=1024)):
 
     return X, w
 
+
+def notch(x, w0, r):
+    k = (1 - (1 + r**2) * np.cos(w0) + r**2) / (2 - 2 * np.cos(w0))
+    b = k * np.array([
+        1,
+        -2 * np.cos(w0),
+        1
+    ])
+    a = k * np.array([
+        1,
+        -(1 + r**2) * np.cos(w0),
+        r**2
+    ])
+    
+    return lfilter(b, a, x)
