@@ -74,3 +74,17 @@ def notch(x, w0, r):
     ])
     
     return lfilter(b, a, x)
+
+def dft(x):
+    N = len(x)
+    n = np.arange(N)
+    X = np.zeros(N, dtype=np.complex)
+    w_n = np.exp(-1j * ((2 * np.pi) / N))
+    
+    for i in n:
+        X[i] = np.sum(x * (w_n ** (i * n)))
+            
+    return X
+
+def idft(x):
+    return np.conj(dft(np.conj(x)) / len(x))
