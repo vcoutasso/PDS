@@ -1,5 +1,6 @@
 import scipy.signal
 import numpy as np
+from numpy.fft import fft
 
 def delta(n):
     return 1. * (n == 0)
